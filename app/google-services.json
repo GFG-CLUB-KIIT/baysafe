@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "854789459236",
+    "project_id": "baysafe-a8260",
+    "storage_bucket": "baysafe-a8260.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854789459236:android:bfe17d6ff1a1cb9e8b37b1",
+        "android_client_info": {
+          "package_name": "com.gfg.kiit.baysafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854789459236-ii7lsj2f61as1uvoidub9tadbddmvm44.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gfg.kiit.baysafe",
+            "certificate_hash": "7ea6053727351afc7c37b56735c07e672b174d56"
+          }
+        },
+        {
+          "client_id": "854789459236-uv2lo9mpo6e60m1h61cfbl8boedjpsqu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gfg.kiit.baysafe",
+            "certificate_hash": "4c00105de14d629f03353e0017a27b719a545473"
+          }
+        },
+        {
+          "client_id": "854789459236-js3mmca0pmoe1a49m4nm7v40cliv5kii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGmzp659LLplGVbR9Gr6CmeAlMaOAKXAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854789459236-js3mmca0pmoe1a49m4nm7v40cliv5kii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
