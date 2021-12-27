@@ -2,4 +2,16 @@
     <string name="app_name">Baysafe</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_account_tv_top">Create a new Account</string>
+    <string name="mobile_number">MOBILE NUMBER</string>
+    <string name="Sign_up">Sign Up</string>
+    <string name="user_name">Name</string>
+    <string name="user_password">Password</string>
+    <string name="user_email">Email</string>
+    <string name="sign_up_using_google">Sign up using Google</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login">Login</string>
+    <string name="sign_in_using_google">Sign In using Google</string>
+    <string name="already_registered">Already registered?</string>
+    <string name="not_registered">Not registered?</string>
 </resources>

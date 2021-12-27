@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "854789459236-u5c7qqq36ti2r2amu3t2fioeeonustov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gfg.kiit.baysafe",
+            "certificate_hash": "08133465073622ec9bdc67801c4918f365629f23"
+          }
+        },
+        {
           "client_id": "854789459236-uv2lo9mpo6e60m1h61cfbl8boedjpsqu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
