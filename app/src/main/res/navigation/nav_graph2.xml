@@ -9,7 +9,14 @@
         android:id="@+id/mapsFragment"
         android:name="com.gfg.kiit.baysafe.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_addingGeofenceFragment"
+            app:destination="@id/addingGeofenceFragment" />
+        <action
+            android:id="@+id/action_mapsFragment_to_emergencyFragment"
+            app:destination="@id/emergencyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.gfg.kiit.baysafe.AccountFragment"
@@ -30,4 +37,17 @@
         android:name="com.gfg.kiit.baysafe.PlacesFragment"
         android:label="fragment_places"
         tools:layout="@layout/fragment_places" />
+    <fragment
+        android:id="@+id/addingGeofenceFragment"
+        android:name="com.gfg.kiit.baysafe.AddingGeofenceFragment"
+        android:label="fragment_adding_geofence"
+        tools:layout="@layout/fragment_adding_geofence" >
+        <action
+            android:id="@+id/action_addingGeofenceFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment"
+            app:popUpTo="@id/addingGeofenceFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            />
+    </fragment>
 </navigation>

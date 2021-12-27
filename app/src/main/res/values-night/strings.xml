@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Permission_text">In order to use this application we will first need to request location permission from you. Otherwise we will not be able to provide you with our service. If you agree and wish to continue tap on the button below.</string>
+    <string name="long_press_on_the_map_n_to_add_a_geofence">Llong press on the map \n to add a geofence</string>
+</resources>
