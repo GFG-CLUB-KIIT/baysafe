@@ -33,14 +33,14 @@ class GeofenceBroadcastReceiver: BroadcastReceiver() {
         {   //When user Enters the Geofence
             Geofence.GEOFENCE_TRANSITION_ENTER->{
                 Log.d("BroadcastReceiver", "Geofence Enter")
-                displayNotification(context,"You have entered Unsafe Zone")
+                displayNotification(context,"You have entered an Unsafe Zone")
             }
 
             //When user Exits the Geofence
             Geofence.GEOFENCE_TRANSITION_EXIT->{
                 Log.d("BroadcastReceiver", "Geofence Exit")
 
-                displayNotification(context,"You have exited Unsafe Zone")
+                displayNotification(context,"You have exited an Unsafe Zone")
             }
 
 
@@ -48,7 +48,7 @@ class GeofenceBroadcastReceiver: BroadcastReceiver() {
             Geofence.GEOFENCE_TRANSITION_DWELL->{
                 Log.d("BroadcastReceiver", "Geofence present")
 
-                displayNotification(context,"You have been in Unsafe Zone for a long time")
+                displayNotification(context,"You have been in an Unsafe Zone for a long time")
             }
             else ->{
                 Log.d("BroadcastReceiver", "Invalid Type")
