@@ -2,6 +2,8 @@
     <string name="app_name">Baysafe</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Permission_text">In order to use this application we will first need to request location permission from you. Otherwise we will not be able to provide you with our service. If you agree and wish to continue tap on the button below.</string>
+    <string name="long_press_on_the_map_n_to_add_a_geofence">Long press on the map \n to add a geofence</string>
     <string name="new_account_tv_top">Create a new Account</string>
     <string name="mobile_number">MOBILE NUMBER</string>
     <string name="Sign_up">Sign Up</string>
@@ -14,4 +16,5 @@
     <string name="sign_in_using_google">Sign In using Google</string>
     <string name="already_registered">Already registered?</string>
     <string name="not_registered">Not registered?</string>
+
 </resources>

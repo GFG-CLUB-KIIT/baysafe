@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapsFragment">
+
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.gfg.kiit.baysafe.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_addingGeofenceFragment"
+            app:destination="@id/addingGeofenceFragment" />
+        <action
+            android:id="@+id/action_mapsFragment_to_emergencyFragment"
+            app:destination="@id/emergencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.gfg.kiit.baysafe.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/emergencyFragment"
+        android:name="com.gfg.kiit.baysafe.EmergencyFragment"
+        android:label="fragment_emergency"
+        tools:layout="@layout/fragment_emergency" />
+    <fragment
+        android:id="@+id/permissionFragment"
+        android:name="com.gfg.kiit.baysafe.PermissionFragment"
+        android:label="fragment_permission"
+        tools:layout="@layout/fragment_permission" />
+    <fragment
+        android:id="@+id/placesFragment"
+        android:name="com.gfg.kiit.baysafe.PlacesFragment"
+        android:label="fragment_places"
+        tools:layout="@layout/fragment_places" />
+    <fragment
+        android:id="@+id/addingGeofenceFragment"
+        android:name="com.gfg.kiit.baysafe.AddingGeofenceFragment"
+        android:label="fragment_adding_geofence"
+        tools:layout="@layout/fragment_adding_geofence" >
+        <action
+            android:id="@+id/action_addingGeofenceFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment"
+            app:popUpTo="@id/addingGeofenceFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            />
+    </fragment>
+</navigation>

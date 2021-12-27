@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".EmergencyFragment">
+    <View android:id="@+id/emergencyView1"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+        android:background="#ff1900"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:id="@+id/emergencyYourLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="YOUR LOCATION"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@+id/emergencyView1"/>
+    <TextView android:textSize="15sp"
+        android:textColor="@color/white"
+        android:id="@+id/emergencyUserLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Your location will be shown here"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emergencyYourLocation"/>
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/emergencyMap"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emergencyView1"/>
+    <View android:background="#ff1900"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emergencyMap"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/emergencyButton"
+        android:textSize="38sp"
+        android:textColor="@color/white"
+        android:background="@drawable/round_button"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:text="ALERT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/emergencyMap"/>
+     <EditText
+         android:id="@+id/emergencyText"
+         android:textSize="18sp"
+         android:textColor="@color/white"
+         android:textColorHint="@color/white"
+         android:gravity="center"
 
-</FrameLayout>
+         android:layout_width="match_parent"
+         android:layout_height="80dp"
+         android:hint="Enter the text that you wish to send with the location"
+         android:backgroundTint="@color/black" app:layout_constraintTop_toBottomOf="@+id/emergencyButton"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
