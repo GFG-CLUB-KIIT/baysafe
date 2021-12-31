@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.gfg.kiit.baysafe.Permissions.hasLocationPermission
 import com.gfg.kiit.baysafe.Permissions.requestsLocationPermission
 import com.gfg.kiit.baysafe.databinding.FragmentPermissionBinding
@@ -24,19 +25,25 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentPermissionBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.continueButton.setOnClickListener {
-            if(Permissions.hasLocationPermission(requireContext()))
-            {
+            if (Permissions.hasLocationPermission(requireContext())) {
                 //
-            }
-            else
-            {
+                with(view) {
+                    findNavController()
+                        .navigate(R.id.action_permissionFragment_to_accountFragment)
+                }
+            } else {
                 Permissions.requestsLocationPermission(this)
             }
         }
-        return binding.root
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -44,6 +51,7 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     ) {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
+
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             SettingsDialog.Builder(requireActivity()).build().show()
@@ -64,6 +72,6 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
 }

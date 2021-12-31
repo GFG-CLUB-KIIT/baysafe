@@ -158,22 +158,25 @@ class SignInFragment : Fragment() {
     */
     private fun loginUser(mail: String, password: String) {
         if (!TextUtils.isEmpty(mail) && !TextUtils.isEmpty(password)) {
-            auth!!.signInWithEmailAndPassword(mail, password)
-                .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
-                        view?.findNavController()
-                            ?.navigate(R.id.action_signUpFragment_to_permissionFragment)
+            activity?.let {
+                auth!!.signInWithEmailAndPassword(mail, password)
+                    .addOnCompleteListener(it
+                    ) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
+                            view?.findNavController()
+                                ?.navigate(R.id.action_signUpFragment_to_permissionFragment)
 
-                    } else {
-                        binding.loginProgressbar.visibility = View.GONE
-                        Toast.makeText(
-                            context,
-                            "Invalid credentials, Try Again!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        } else {
+                            binding.loginProgressbar.visibility = View.GONE
+                            Toast.makeText(
+                                context,
+                                "Invalid credentials, Try Again!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
+            }
         }
     }
 
