@@ -1,6 +1,11 @@
 package com.gfg.kiit.baysafe
 
+import android.content.Context
+import android.content.Intent
+import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,13 +31,23 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         _binding = FragmentPermissionBinding.inflate(inflater, container, false)
 
         binding.continueButton.setOnClickListener {
-            if(Permissions.hasLocationPermission(requireContext()))
-            {
-                //
+            if(hasLocationPermission(requireContext()))
+            {   if(!isLocationEnabled())
+                {
+                requireActivity().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+                else
+                {
+                    requireActivity().run {
+                        startActivity(Intent(this, MainActivity2::class.java))
+                    }
+                }
+
             }
             else
             {
-                Permissions.requestsLocationPermission(this)
+
+                requestsLocationPermission(this)
             }
         }
         return binding.root
@@ -45,10 +60,11 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             SettingsDialog.Builder(requireActivity()).build().show()
         } else {
-            Permissions.requestsLocationPermission(this)
+            requestsLocationPermission(this)
             Permissions.requestsInternetPermission(this)
         }
     }
@@ -60,7 +76,23 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             Toast.LENGTH_SHORT
         ).show()
     }
+    private fun isLocationEnabled():Boolean
+    {
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)||locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER)
+
+    }
+    override fun onResume() {
+        super.onResume()
+        if(!isLocationEnabled())
+        {
+            requireActivity().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+        }
+
+
+    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -35,7 +35,9 @@ class EmergencyFragment : Fragment() {
         Log.d("Emergency1","hello $userLatitude $userLongitude")
         val yourLocation = LatLng(userLatitude, userLongitude)
         googleMap.addMarker(MarkerOptions().position(yourLocation).title("Marker in your Location"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(yourLocation))
+        googleMap.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(LatLng(userLatitude,userLongitude),15f),1000,null
+        )
     }
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,9 +59,7 @@ class EmergencyFragment : Fragment() {
 
                     val geocoder=Geocoder(requireContext(), Locale.getDefault())
                     val address: Address?
-                    Log.d("Emergency18","$userLatitude $userLongitude")
                     val addresses: List<Address> =geocoder.getFromLocation(userLatitude, userLongitude, 1)
-                    Log.d("Emergency19"," ${addresses.size}")
 
                     if (addresses.isNotEmpty()) {
                         address = addresses[0]
@@ -88,7 +88,6 @@ class EmergencyFragment : Fragment() {
         binding.emergencyButton.setOnClickListener{
             sendMessage()
         }
-        Log.d("Emergency193","6")
 
         return binding.root
     }

@@ -42,7 +42,8 @@ import javax.inject.Inject
     fun addGeofence(location:LatLng,radius:Double)
     {
         //Adding to Geofence List
-        geofencesList.add(GeofenceDetails(location, radius))
+        Log.d("SharedViewModel", radius.toString())
+        geofencesList.add(GeofenceDetails(location, radius*1000))
 
         //Upload on Firebase
 
@@ -74,7 +75,7 @@ import javax.inject.Inject
                     Geofence.GEOFENCE_TRANSITION_ENTER or Geofence.GEOFENCE_TRANSITION_EXIT or Geofence.GEOFENCE_TRANSITION_DWELL
                 )
 
-                .setLoiteringDelay(5000)
+                .setLoiteringDelay(1000)
                 .build()
             val geofencingRequest = GeofencingRequest.Builder()
                 .setInitialTrigger(
