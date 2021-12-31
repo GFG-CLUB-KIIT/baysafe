@@ -1,12 +1,16 @@
 package com.gfg.kiit.baysafe
 
+import android.content.Context
+import android.content.Intent
+import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
 import com.gfg.kiit.baysafe.Permissions.hasLocationPermission
 import com.gfg.kiit.baysafe.Permissions.requestsLocationPermission
 import com.gfg.kiit.baysafe.databinding.FragmentPermissionBinding
@@ -25,25 +29,29 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentPermissionBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.continueButton.setOnClickListener {
-            if (Permissions.hasLocationPermission(requireContext())) {
-                //
-                with(view) {
-                    findNavController()
-                        .navigate(R.id.action_permissionFragment_to_accountFragment)
+            if(hasLocationPermission(requireContext()))
+            {   if(!isLocationEnabled())
+                {
+                requireActivity().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                 }
-            } else {
-                Permissions.requestsLocationPermission(this)
+                else
+                {
+                    requireActivity().run {
+                        startActivity(Intent(this, MainActivity2::class.java))
+                    }
+                }
+
+            }
+            else
+            {
+
+                requestsLocationPermission(this)
             }
         }
+        return binding.root
     }
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -51,12 +59,12 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     ) {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
-
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             SettingsDialog.Builder(requireActivity()).build().show()
         } else {
-            Permissions.requestsLocationPermission(this)
+            requestsLocationPermission(this)
             Permissions.requestsInternetPermission(this)
         }
     }
@@ -68,10 +76,26 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             Toast.LENGTH_SHORT
         ).show()
     }
+    private fun isLocationEnabled():Boolean
+    {
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)||locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER)
+
+    }
+    override fun onResume() {
+        super.onResume()
+        if(!isLocationEnabled())
+        {
+            requireActivity().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+        }
+
+
+    }
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+        _binding=null
     }
 }
