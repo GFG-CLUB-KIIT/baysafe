@@ -24,12 +24,14 @@ class PlacesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentPlacesBinding.inflate(inflater,container,false)
-        binding.apply {
-            recyclerView.apply {
-                adapter = placeAdapter
-                layoutManager = LinearLayoutManager(context)
-            }
-        }
+
+//        For Recycler View.
+//        binding.apply {
+//            recyclerView.apply {
+//                adapter = placeAdapter
+//                layoutManager = LinearLayoutManager(context)
+//            }
+//        }
         return binding.root
     }
 }
