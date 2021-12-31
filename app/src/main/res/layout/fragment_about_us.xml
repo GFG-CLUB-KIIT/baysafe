@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AboutUsFragment"
+    android:background="@color/purple_700">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/gfg_kiit"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+       app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="@string/about_us"
+        android:textSize="14sp" />
+    <RelativeLayout
+        android:id="@+id/developer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/body"
+        android:layout_margin="30dp"
+        android:background="@color/white">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DeveloperImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:src="@drawable/shishir" />
+
+        <!--Text View to display Developer's Name-->
+        <TextView
+            android:id="@+id/DeveloperName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/DeveloperImage"
+            android:text="Shishir Sharma"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DeveloperEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DeveloperName1"
+            android:layout_marginStart="10dp"
+            android:text="Get to know more"
+            android:layout_toEndOf="@id/DeveloperImage"
+            android:drawablePadding="2dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/developer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/developer1"
+        android:layout_margin="30dp"
+        android:background="@color/white">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DeveloperImage2"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:src="@drawable/abhishekdutt" />
+
+        <!--Text View to display Developer's Name-->
+        <TextView
+            android:id="@+id/DeveloperName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/DeveloperImage2"
+            android:text="Abhishek Dutt"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DeveloperEmail2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DeveloperName2"
+            android:layout_marginStart="10dp"
+            android:text="Get to know more"
+            android:layout_toEndOf="@id/DeveloperImage2"
+            android:drawablePadding="2dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/developer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/developer2"
+        android:layout_margin="30dp"
+        android:background="@color/white">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DeveloperImage3"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:src="@drawable/abhishek" />
+
+        <!--Text View to display Developer's Name-->
+        <TextView
+            android:id="@+id/DeveloperName3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/DeveloperImage3"
+            android:text="Abhishek Samantaray"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DeveloperEmail3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DeveloperName3"
+            android:layout_marginStart="10dp"
+            android:text="Get to know more"
+            android:layout_toEndOf="@id/DeveloperImage3"
+            android:drawablePadding="2dp" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

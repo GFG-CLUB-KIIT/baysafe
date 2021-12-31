@@ -3,21 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph1"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/splashFragment">
 
-    <fragment
-        android:id="@+id/accountFragment"
-        android:name="com.gfg.kiit.baysafe.AccountFragment"
-        android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/permissionFragment"
         android:name="com.gfg.kiit.baysafe.PermissionFragment"
         android:label="fragment_permission"
         tools:layout="@layout/fragment_permission" >
-        <action
-            android:id="@+id/action_permissionFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -41,6 +33,15 @@
             app:destination="@id/permissionFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.gfg.kiit.baysafe.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
 </navigation>

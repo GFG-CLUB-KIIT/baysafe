@@ -7,8 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".EmergencyFragment">
     <View android:id="@+id/emergencyView1"
-
-        android:background="#ff1900"
+        android:background="@color/purple_700"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +39,7 @@
         android:layout_height="300dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emergencyView1"/>
-    <View android:background="#ff1900"
+    <View android:background="@color/purple_700"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +63,6 @@
          android:textColor="@color/white"
          android:textColorHint="@color/white"
          android:gravity="center"
-
          android:layout_width="match_parent"
          android:layout_height="80dp"
          android:hint="Enter the text that you wish to send with the location"

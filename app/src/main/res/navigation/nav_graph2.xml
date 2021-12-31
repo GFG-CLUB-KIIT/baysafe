@@ -21,7 +21,14 @@
         android:id="@+id/accountFragment"
         android:name="com.gfg.kiit.baysafe.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_hintsFragment"
+            app:destination="@id/hintsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/emergencyFragment"
         android:name="com.gfg.kiit.baysafe.EmergencyFragment"
@@ -49,5 +56,23 @@
             app:popUpToInclusive="true"
             app:launchSingleTop="true"
             />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.gfg.kiit.baysafe.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" >
+        <action
+            android:id="@+id/action_aboutUsFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hintsFragment"
+        android:name="com.gfg.kiit.baysafe.HintsFragment"
+        android:label="fragment_hints"
+        tools:layout="@layout/fragment_hints" >
+        <action
+            android:id="@+id/action_hintsFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
 </navigation>

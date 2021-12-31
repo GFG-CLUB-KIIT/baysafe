@@ -149,7 +149,7 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
         {
             if(sharedViewModel.geofencePrepared)
             {   Log.d("Map1","Before Geofence Added")
-                setupGeofence(location)
+                setupGeofence(location,sharedViewModel.geoRadius*1000)
             }
             else
             {
@@ -166,10 +166,10 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
         }
     }
 
-    private fun setupGeofence(location: LatLng) {
+    private fun setupGeofence(location: LatLng,radius: Float) {
         lifecycleScope.launch {
             Log.d("Map1","Setting Up Geofence")
-            drawCircle(location,sharedViewModel.geoRadius.toDouble())
+            drawCircle(location, radius.toDouble())
             drawMarker(location)
 
             //Adding Geofence to the database and Firebase
@@ -199,9 +199,9 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
     }
 
     private fun drawCircle(location: LatLng,radius:Double) {
-        Log.d("Map1"," Adding Circle ${location.latitude}, ${location.longitude} radius${sharedViewModel.geoRadius}")
+        Log.d("Map1"," Adding Circle ${location.latitude}, ${location.longitude} radius${sharedViewModel.geoRadius*1000}")
         map.addCircle(
-            CircleOptions().center(location).radius(radius*400)
+            CircleOptions().center(location).radius(radius)
                 .strokeColor(ContextCompat.getColor(requireContext(), R.color.red))
                 .fillColor(ContextCompat.getColor(requireContext(), R.color.red_200))
         )

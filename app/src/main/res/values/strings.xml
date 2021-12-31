@@ -16,5 +16,13 @@
     <string name="sign_in_using_google">Sign In using Google</string>
     <string name="already_registered">Already registered?</string>
     <string name="not_registered">Not registered?</string>
+    <string name="about_us">We are a group of enthusiasts working relentlessly day in day out for utilising technology for a better cause. We aim to solve real-world problems and build products that can impact others. We are putting immense efforts into increasing our standards and hope to fulfill our dreams encouraging many others to dive deep into technology and bring the best out of it making the world a better place.</string>
+    <string name="gfg_kiit">GFG KIIT</string>
+    <string name="hintStart">To mark a location unsafe:</string>
+    <string name="step1">Go to Map, click on the add button and then click on the first icon.</string>
+    <string name="step2">Select the radius of the unsafe zone.</string>
+    <string name="step3">Long hold the location where you wish to add unsafe zone.</string>
+    <string name="step4">Congratulations, unsafe zone is added.</string>
+    <string name="baysafe">BAYSAFE</string>
 
 </resources>
