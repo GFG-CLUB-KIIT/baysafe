@@ -105,7 +105,7 @@ class EmergencyFragment : Fragment() {
         val message=binding.emergencyText.text.toString()
         val sendIntent:Intent=Intent().apply {
             action=Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "http://maps.google.com/maps?sadd=$userLatitude,$userLongitude $message")
+            putExtra(Intent.EXTRA_TEXT, "http://maps.google.com/maps?q=$userLatitude,$userLongitude $message")
             type = "text/plain"
            setPackage("com.whatsapp")
         }
