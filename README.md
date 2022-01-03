@@ -21,7 +21,6 @@
 </ul>
 
 <h2> Working </h2>
-<h2> Technology </h2>
 <ul>
   <li> The core of the app is the Google-Places SDK. A user can create a geofence, with a selected radius(in the range of 1km-10km) to mark it as unsafe. Once marked unsafe, 
 a red region forms around the geofence. </li>
