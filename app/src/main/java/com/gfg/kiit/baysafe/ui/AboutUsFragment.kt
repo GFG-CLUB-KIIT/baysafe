@@ -1,4 +1,4 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.ui
 
 import android.content.Intent
 import android.net.Uri

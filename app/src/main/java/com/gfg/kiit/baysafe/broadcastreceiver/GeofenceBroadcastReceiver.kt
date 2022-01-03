@@ -1,4 +1,4 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.broadcastreceiver
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -8,9 +8,10 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.gfg.kiit.baysafe.Constants.NOTIFICATION_CHANNEL_ID
-import com.gfg.kiit.baysafe.Constants.NOTIFICATION_CHANNEL_NAME
-import com.gfg.kiit.baysafe.Constants.NOTIFICATION_ID
+import com.gfg.kiit.baysafe.data.DataDetails.NOTIFICATION_CHANNEL_ID
+import com.gfg.kiit.baysafe.data.DataDetails.NOTIFICATION_CHANNEL_NAME
+import com.gfg.kiit.baysafe.data.DataDetails.NOTIFICATION_ID
+import com.gfg.kiit.baysafe.R
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.GeofenceStatusCodes
 import com.google.android.gms.location.GeofencingEvent

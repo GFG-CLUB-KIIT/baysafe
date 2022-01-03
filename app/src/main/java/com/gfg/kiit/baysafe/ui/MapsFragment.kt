@@ -1,8 +1,6 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.ui
 
 import android.annotation.SuppressLint
-import android.location.Address
-import android.location.Geocoder
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -17,9 +15,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.gfg.kiit.baysafe.Permissions.hasBackgroundLocationPermission
-import com.gfg.kiit.baysafe.Permissions.requestsBackgroundLocationPermission
+import com.gfg.kiit.baysafe.data.DataDetails
+import com.gfg.kiit.baysafe.feature.Permissions.hasBackgroundLocationPermission
+import com.gfg.kiit.baysafe.feature.Permissions.requestsBackgroundLocationPermission
+import com.gfg.kiit.baysafe.R
 import com.gfg.kiit.baysafe.databinding.FragmentMapsBinding
+import com.gfg.kiit.baysafe.viewmodel.SharedViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -42,38 +43,19 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
     private var userLongitude=0.0
     private  lateinit var map:GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private val toBottom2: Animation by lazy{AnimationUtils.loadAnimation(requireContext(),R.anim.to_bottom2)}
-    private val toBottom: Animation by lazy{AnimationUtils.loadAnimation(requireContext(),R.anim.to_bottom)}
-    private val fromBottom: Animation by lazy{AnimationUtils.loadAnimation(requireContext(),R.anim.from_bottom)}
+    private val toBottom2: Animation by lazy{AnimationUtils.loadAnimation(requireContext(),
+        R.anim.to_bottom2
+    )}
+    private val toBottom: Animation by lazy{AnimationUtils.loadAnimation(requireContext(),
+        R.anim.to_bottom
+    )}
+    private val fromBottom: Animation by lazy{AnimationUtils.loadAnimation(requireContext(),
+        R.anim.from_bottom
+    )}
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
 
-    @SuppressLint("MissingPermission")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location->
-                if (location != null) {
-                    userLatitude=location.latitude
-                    userLongitude=location.longitude
-                    Log.d("Map1","$userLatitude $userLongitude")
-                }
-
-                val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-                mapFragment?.getMapAsync(this)
-
-
-                sharedViewModel.geoLatLng= LatLng(userLatitude,userLongitude)
-                Log.d("Map1","$userLatitude $userLongitude")
-
-            }
-
-        lifecycleScope.launch {
-            delay(2000)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -98,14 +80,26 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
 
         return binding.root
     }
+    @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location->
+                if (location != null) {
+                    userLatitude=location.latitude
+                    userLongitude=location.longitude
+                }
+
+                val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+                mapFragment?.getMapAsync(this)
+             sharedViewModel.geoLatLng= LatLng(userLatitude,userLongitude)
+
+            }
     }
     override fun onMapReady(googleMap: GoogleMap) {
         map= googleMap
-        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),R.raw.mapstyle))
+        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle))
         map.setOnMapLongClickListener(this)
         markingGeofence()
         onGeofenceReady()
@@ -114,12 +108,13 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
     }
 
     private fun markingGeofence() {
-        map.clear()
-        for(i in sharedViewModel.geofencesList)
-        {
-            drawCircle(LatLng(i.location.latitude,i.location.longitude),i.geoRadius)
-            drawMarker(LatLng(i.location.latitude,i.location.longitude))
-        }
+
+            map.clear()
+            for (i in DataDetails.geofencesList) {
+                drawCircle(LatLng(i.location.latitude, i.location.longitude), i.geoRadius)
+                drawMarker(LatLng(i.location.latitude, i.location.longitude))
+            }
+
     }
 
 
@@ -168,24 +163,21 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
 
     private fun setupGeofence(location: LatLng,radius: Float) {
         lifecycleScope.launch {
-            Log.d("Map1","Setting Up Geofence")
+            Log.d("Map1", "Setting Up Geofence")
+
             drawCircle(location, radius.toDouble())
             drawMarker(location)
-
             //Adding Geofence to the database and Firebase
-            sharedViewModel.addGeofence(location,sharedViewModel.geoRadius.toDouble())
-            delay(2000)
+             sharedViewModel.addGeofence(location, radius.toDouble())
 
             //Starting Geofence
-            sharedViewModel.startGeofence()
-
-
+            sharedViewModel.startGeofence(location, radius)
             //Zooming to Location
-            zoomtoGeofence(location)
-      }
+            sharedViewModel.geoLatLng=LatLng(location.latitude,location.longitude)
+//            zoomtoGeofence(location)
+        }
     }
     private fun zoomtoLocation() {
-        Log.d("Map1","Zoom Working")
         val yourLocation=LatLng(userLatitude,userLongitude)
         map.addMarker(MarkerOptions().position(yourLocation))
         map.animateCamera(
@@ -199,16 +191,14 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
     }
 
     private fun drawCircle(location: LatLng,radius:Double) {
-        Log.d("Map1"," Adding Circle ${location.latitude}, ${location.longitude} radius${sharedViewModel.geoRadius*1000}")
         map.addCircle(
             CircleOptions().center(location).radius(radius)
-                .strokeColor(ContextCompat.getColor(requireContext(), R.color.red))
-                .fillColor(ContextCompat.getColor(requireContext(), R.color.red_200))
+                .strokeColor(ContextCompat.getColor(requireContext(), R.color.purple_500))
+                .fillColor(ContextCompat.getColor(requireContext(), R.color.red))
         )
     }
 
     private fun drawMarker(location: LatLng) {
-        Log.d("Map1","Adding Marker ${location.latitude},hey ${location.longitude}")
         map.addMarker(
             MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
         )
@@ -220,7 +210,6 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
@@ -262,7 +251,7 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
 
     private fun setVisibility(clicked:Boolean) {
         if(!clicked)
-        {   Log.d("Map","clicked i false")
+        {
             binding.addGeoFenceButton.isClickable=true
             binding.alertButton2.isClickable=true
             binding.addGeoFenceButton.visibility=View.VISIBLE
@@ -270,7 +259,6 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
         }
         else
         {
-            Log.d("Map","clicked i true")
             binding.addGeoFenceButton.isClickable=false
             binding.alertButton2.isClickable=false
             binding.addGeoFenceButton.visibility=View.INVISIBLE

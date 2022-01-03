@@ -2,8 +2,9 @@ package com.gfg.kiit.baysafe
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.gfg.kiit.baysafe.viewmodel.SharedViewModel
 import com.google.android.material.slider.Slider
-import kotlin.coroutines.coroutineContext
+
 @BindingAdapter("updateSliderValueTextView","getGeoRadius", requireAll = true)
 fun Slider.updateSliderValue(textView: TextView, sharedViewModel: SharedViewModel)
 {

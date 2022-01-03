@@ -4,19 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/drawable/ic_welcome_image.xml" value="0.178125" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/drawable/places_selector.xml" value="0.178125" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/drawable/round_button.xml" value="0.178125" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/activity_main.xml" value="0.1213768115942029" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/activity_main2.xml" value="0.1331521739130435" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/activity_splash.xml" value="0.16197916666666667" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_about_us.xml" value="0.11820652173913043" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_account.xml" value="0.16197916666666667" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_addiing_geofence.xml" value="0.16197916666666667" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_adding_geofence.xml" value="0.13333333333333333" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_emergency.xml" value="0.1" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_hints.xml" value="0.11820652173913043" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_load_geofence.xml" value="0.16197916666666667" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_maps.xml" value="0.12" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_maps2.xml" value="0.1" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_permission.xml" value="0.22" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_places.xml" value="0.16197916666666667" />
         <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/fragment_splash.xml" value="0.12273550724637682" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/layout/item_places.xml" value="0.22" />
+        <entry key="..\:/Android Studio Work/baysafe/app/src/main/res/menu/bottom_menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Android/baysafe/app/src/main/res/drawable/rounded_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Android/baysafe/app/src/main/res/layout/fragment_account.xml" value="0.17527173913043478" />
         <entry key="..\:/Android/baysafe/app/src/main/res/layout/fragment_adding_geofence.xml" value="0.21195652173913043" />

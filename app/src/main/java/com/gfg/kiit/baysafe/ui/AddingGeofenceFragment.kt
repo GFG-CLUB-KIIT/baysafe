@@ -1,4 +1,4 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.gfg.kiit.baysafe.R
 import com.gfg.kiit.baysafe.databinding.FragmentAddingGeofenceBinding
-import com.gfg.kiit.baysafe.databinding.FragmentMapsBinding
+import com.gfg.kiit.baysafe.viewmodel.SharedViewModel
 
 
 class AddingGeofenceFragment : Fragment() {
@@ -27,8 +28,6 @@ class AddingGeofenceFragment : Fragment() {
         binding.buttonDone.setOnClickListener{
             sharedViewModel.geoRadius=binding.slider.value
             sharedViewModel.geofenceReady=true
-
-//            Log.d("AddingGeofence","${sharedViewModel.geoRadius},${sharedViewModel.geoLatLng}")
 
             findNavController().navigate(R.id.action_addingGeofenceFragment_to_mapsFragment)
         }

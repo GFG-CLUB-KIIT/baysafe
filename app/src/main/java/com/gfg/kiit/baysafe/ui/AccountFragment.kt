@@ -1,4 +1,4 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.gfg.kiit.baysafe.activity.MainActivity
+import com.gfg.kiit.baysafe.R
+import com.gfg.kiit.baysafe.data.SavedPreference
 import com.gfg.kiit.baysafe.databinding.FragmentAccountBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient

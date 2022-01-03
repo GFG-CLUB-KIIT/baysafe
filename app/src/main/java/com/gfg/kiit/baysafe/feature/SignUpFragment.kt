@@ -14,11 +14,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.gfg.kiit.baysafe.R
-import com.gfg.kiit.baysafe.SavedPreference
+import com.gfg.kiit.baysafe.data.SavedPreference
 import com.gfg.kiit.baysafe.databinding.FragmentSignUpBinding
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn

@@ -6,13 +6,13 @@
     <data>
         <variable
             name="sharedViewModel"
-            type="com.gfg.kiit.baysafe.SharedViewModel" />
+            type="com.gfg.kiit.baysafe.viewmodel.SharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddingGeofenceFragment">
+        tools:context=".ui.AddingGeofenceFragment">
 
         <TextView
             android:layout_width="match_parent"

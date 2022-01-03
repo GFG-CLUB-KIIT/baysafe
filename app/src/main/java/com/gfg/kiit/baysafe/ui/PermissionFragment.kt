@@ -1,18 +1,20 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.ui
 
 import android.content.Context
 import android.content.Intent
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.gfg.kiit.baysafe.Permissions.hasLocationPermission
-import com.gfg.kiit.baysafe.Permissions.requestsLocationPermission
+import androidx.navigation.fragment.findNavController
+import com.gfg.kiit.baysafe.feature.Permissions
+import com.gfg.kiit.baysafe.feature.Permissions.hasLocationPermission
+import com.gfg.kiit.baysafe.feature.Permissions.requestsLocationPermission
+import com.gfg.kiit.baysafe.R
 import com.gfg.kiit.baysafe.databinding.FragmentPermissionBinding
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
@@ -35,12 +37,12 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             {   if(!isLocationEnabled())
                 {
                 requireActivity().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+
                 }
                 else
                 {
-                    requireActivity().run {
-                        startActivity(Intent(this, MainActivity2::class.java))
-                    }
+          findNavController().navigate(R.id.action_permissionFragment_to_loadGeofenceFragment)
+
                 }
 
             }
