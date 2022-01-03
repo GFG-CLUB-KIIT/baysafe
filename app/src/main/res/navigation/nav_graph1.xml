@@ -7,9 +7,12 @@
 
     <fragment
         android:id="@+id/permissionFragment"
-        android:name="com.gfg.kiit.baysafe.PermissionFragment"
+        android:name="com.gfg.kiit.baysafe.ui.PermissionFragment"
         android:label="fragment_permission"
         tools:layout="@layout/fragment_permission" >
+        <action
+            android:id="@+id/action_permissionFragment_to_loadGeofenceFragment"
+            app:destination="@id/loadGeofenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -37,11 +40,16 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.gfg.kiit.baysafe.SplashFragment"
+        android:name="com.gfg.kiit.baysafe.ui.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loadGeofenceFragment"
+        android:name="com.gfg.kiit.baysafe.ui.LoadGeofenceFragment"
+        android:label="fragment_load_geofence"
+        tools:layout="@layout/fragment_load_geofence" />
 </navigation>

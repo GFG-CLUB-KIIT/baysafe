@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".EmergencyFragment">
+    tools:context=".ui.EmergencyFragment">
     <View android:id="@+id/emergencyView1"
         android:background="@color/purple_700"
         android:layout_width="match_parent"

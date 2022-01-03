@@ -1,4 +1,4 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.activity
 
 import android.content.res.Resources
 import android.os.Bundle

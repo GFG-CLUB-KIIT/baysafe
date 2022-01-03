@@ -1,4 +1,4 @@
-package com.gfg.kiit.baysafe
+package com.gfg.kiit.baysafe.data
 
 import android.content.Context
 import android.content.SharedPreferences

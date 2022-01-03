@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Baysafe">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,14 +24,14 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".GeofenceBroadcastReceiver" />
+        <receiver android:name=".broadcastreceiver.GeofenceBroadcastReceiver" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity2"
+            android:name=".activity.MainActivity2"
             android:exported="true">
         </activity>
     </application>
