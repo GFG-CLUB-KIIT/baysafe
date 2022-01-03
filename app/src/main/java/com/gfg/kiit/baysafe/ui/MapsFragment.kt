@@ -93,9 +93,12 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
 
                 val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
                 mapFragment?.getMapAsync(this)
-             sharedViewModel.geoLatLng= LatLng(userLatitude,userLongitude)
+
 
             }
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment?.getMapAsync(this)
+
     }
     override fun onMapReady(googleMap: GoogleMap) {
         map= googleMap
@@ -173,15 +176,16 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMapLongClickListe
             //Starting Geofence
             sharedViewModel.startGeofence(location, radius)
             //Zooming to Location
-            sharedViewModel.geoLatLng=LatLng(location.latitude,location.longitude)
-//            zoomtoGeofence(location)
+
+            zoomtoGeofence(location)
         }
     }
     private fun zoomtoLocation() {
-        val yourLocation=LatLng(userLatitude,userLongitude)
-        map.addMarker(MarkerOptions().position(yourLocation))
+
+
+        map.addMarker(MarkerOptions().position(LatLng(userLatitude,userLongitude)))
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(sharedViewModel.geoLatLng,15f),1000,null
+            CameraUpdateFactory.newLatLngZoom(LatLng(userLatitude,userLongitude),15f),1000,null
         )
     }
     private fun zoomtoGeofence(location: LatLng) {
